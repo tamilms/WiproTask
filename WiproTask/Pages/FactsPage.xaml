@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:local="clr-namespace:WiproTask;assembly=WiproTask"
+    x:Class="WiproTask.FactsPage">
+	<ContentPage.Content>
+     <StackLayout>
+      <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
+       <Label Text="{Binding ListTitle}"  TextColor="#505a82" FontSize="18"/> 
+      
+       <ListView x:Name="listview" HasUnevenRows="true" ItemsSource="{Binding ListBindingSourceData}" Margin="5,5,5,0" HorizontalOptions="FillAndExpand" SeparatorVisibility="None" VerticalOptions="FillAndExpand"/>   
+        <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+         <Button Command="{Binding SortCommand}" HorizontalOptions="FillAndExpand"   Text="Sort" TextColor="Teal"/>   
+         <Button Command="{Binding RefreshCommand}" HorizontalOptions="FillAndExpand"  Text="Refresh" TextColor="Teal"/>   
+       </StackLayout>                  
+      </StackLayout>      
+     </StackLayout>   
+	</ContentPage.Content>
+</ContentPage>

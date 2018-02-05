@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    x:Class="WiproTask.FactsListViewCell">
+	<ViewCell.View>
+        <StackLayout Spacing="0" HorizontalOptions="FillAndExpand"  Margin="0,0,0,5" BackgroundColor="#ececec" Orientation="Vertical">
+         <StackLayout HorizontalOptions="FillAndExpand" Margin="5,0,5,0" Orientation="Vertical">   
+        <Label  Text="{Binding title}" FontSize="16" TextColor="#505a82" LineBreakMode="WordWrap"/>
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="Auto"/>   
+              <ColumnDefinition Width="Auto"/>          
+          </Grid.ColumnDefinitions>
+            <Label Grid.Column="0"  Text="{Binding description}" FontSize="13" TextColor="#676767"/>
+             <ffimageloading:CachedImage Grid.Column="1"  WidthRequest="100" HeightRequest="100"
+            DownsampleToViewSize="true" Source="{Binding imageHref}">
+        </ffimageloading:CachedImage>  
+           <ffimageloading:CachedImage Grid.Column="2" 
+            DownsampleToViewSize="true" Source="ic_arrow.png">
+        </ffimageloading:CachedImage>       
+       </Grid> 
+         </StackLayout>  
+      </StackLayout>      
+    </ViewCell.View>
+</ViewCell>
