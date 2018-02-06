@@ -11,7 +11,8 @@
        <ListView x:Name="listview" HasUnevenRows="true" ItemsSource="{Binding ListBindingSourceData}" Margin="5,5,5,0" HorizontalOptions="FillAndExpand" SeparatorVisibility="None" VerticalOptions="FillAndExpand"/>   
         <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
          <Button Command="{Binding SortCommand}" HorizontalOptions="FillAndExpand"   Text="Sort" TextColor="Teal"/>   
-         <Button Command="{Binding RefreshCommand}" HorizontalOptions="FillAndExpand"  Text="Refresh" TextColor="Teal"/>   
+         <Button Command="{Binding RefreshCommand}" HorizontalOptions="FillAndExpand"  Text="Refresh" TextColor="Teal"/>  
+         <Button Command="{Binding LoadDataFromLocalFileCommand}" HorizontalOptions="FillAndExpand"  Text="Data From Local File" TextColor="Teal"/>             
        </StackLayout>                  
       </StackLayout>      
      </StackLayout>   

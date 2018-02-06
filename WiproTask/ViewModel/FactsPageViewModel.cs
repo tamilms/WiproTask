@@ -8,23 +8,25 @@ using System.Windows.Input;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 using System.Linq;
+using System.IO;
+using System.Reflection;
 
 namespace WiproTask
 {
     public class FactsPageViewModel:INotifyPropertyChanged
     {
-        FactsPage Page;
+        FactsPage mPage;
         /// <summary>
         /// Flag for set Sort Asc/Desc
         /// </summary>
         bool isAlreadySortAsc = false;
         public FactsPageViewModel(FactsPage page)
         {
-            Page = page;
+            mPage = page;
             InitializePage();
 
-            Page.listviewFacts.ItemTapped+=delegate {
-                Page.listviewFacts.SelectedItem = null;
+            mPage.listviewFacts.ItemTapped+=delegate {
+                mPage.listviewFacts.SelectedItem = null;
             };
         }
 
@@ -70,9 +72,61 @@ namespace WiproTask
                     if (FactsSourceData != null)
                     {
                         isAlreadySortAsc = false;
+
+
                         ListBindingSourceData = new ObservableCollection<Row>(FactsSourceData.rows.ToList());
                     }
                 });
+            }
+        }
+
+
+        public ICommand LoadDataFromLocalFileCommand
+        {
+            get
+            {
+                return new Command((obj) => {
+                    LoadDataFromLocalFile();
+                });
+            }
+        }
+
+        /// <summary>
+        /// Loads the data from local file.
+        /// </summary>
+        public async void LoadDataFromLocalFile()
+        {
+            try
+            {
+                FactsSourceData = null;
+                ListBindingSourceData = null;
+                isAlreadySortAsc = false;
+                var assembly = typeof(FactsPage).GetTypeInfo().Assembly;
+                Stream stream = assembly.GetManifestResourceStream("WiproTask.DataFile.txt");
+                string text = "";
+                using (var reader = new System.IO.StreamReader(stream))
+                {
+                    text = reader.ReadToEnd();
+                }
+
+                var saveData = JsonConvert.DeserializeObject<FactsModel>(text);
+                if (saveData != null)
+                {
+
+                    FactsSourceData = saveData;
+
+                    if (FactsSourceData.rows.Count > 0)
+                    {
+                        ListTitle = FactsSourceData.title;
+                        ListBindingSourceData =new ObservableCollection<Row>( FactsSourceData.rows.OrderByDescending(x=>x.title).ToList());
+
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
 
@@ -85,7 +139,7 @@ namespace WiproTask
             {
                 if (!UtilityClasses.isNetWorkAvailable())
                 {
-                    UtilityClasses.CallDisplayAlert("Mobile Data is Turned Off", "Turn on mobile data or use Wi-Fi to access data.", Page, true, "Network", "Setting", "OK");
+                    UtilityClasses.CallDisplayAlert("Mobile Data is Turned Off", "Turn on mobile data or use Wi-Fi to access data.", mPage, true, "Network", "Setting", "OK");
                 }
                 else
                 {
@@ -120,7 +174,7 @@ namespace WiproTask
                                 if (FactsSourceData.rows.Count > 0)
                                 {
                                     ListTitle = FactsSourceData.title;
-                                    Page.listviewFacts.ItemTemplate = new DataTemplate(typeof(FactsListViewCell));
+                                    mPage.listviewFacts.ItemTemplate = new DataTemplate(typeof(FactsListViewCell));
                                     ListBindingSourceData = FactsSourceData.rows;
 
                                 }
