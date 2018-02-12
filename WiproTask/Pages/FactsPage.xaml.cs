@@ -19,12 +19,12 @@ namespace WiproTask
 
             this.Title = "Wipro Task";
             /// <summary>
-             /// Intialize The ViewModel 
+            /// Intialize The FactsPageViewModel for FactsPage
             /// </summary>
             viewModel = new FactsPageViewModel(this);
 
             /// <summary>
-            /// Assign ViewModel to Page
+            /// Assign FactsPageViewModel to Page
             /// </summary>
             BindingContext = viewModel;
 

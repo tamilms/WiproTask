@@ -1,4 +1,4 @@
-﻿<Properties StartupConfiguration="{85046864-C61F-48D8-B23E-D76A343D92E3}|Default" GitUserInfo="UsingMD">
+﻿<Properties StartupConfiguration="{1179F486-32C4-4681-A29C-C58DFFD0CB59}|Default" GitUserInfo="UsingMD">
   <MonoDevelop.Ide.Workbench ActiveDocument="Wipro Status">
     <Files>
       <File FileName="Wipro Status" />
@@ -12,6 +12,6 @@
   <MonoDevelop.Ide.ItemProperties.WiproTask.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0F605F41-9F69-4E23-A01A-0BA83BFA2476" automaticSigning="True">
     <MonoDevelop.MacDev.AppleDevelopmentTeam DeveloperId="D75PCUE838" TeamId="Y382RF7UT9" />
   </MonoDevelop.Ide.ItemProperties.WiproTask.iOS>
-  <MonoDevelop.Ide.ItemProperties.WiproTask.Droid PreferredExecutionTarget="Android.192.168.56.101:5555" />
+  <MonoDevelop.Ide.ItemProperties.WiproTask.Droid PreferredExecutionTarget="Android.SelectDevice" />
   <MultiItemStartupConfigurations />
 </Properties>

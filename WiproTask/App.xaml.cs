@@ -8,6 +8,7 @@ namespace WiproTask
         {
             InitializeComponent();
 
+            //Assign the Application Main Page as FactsPage
             MainPage = new NavigationPage( new FactsPage()){BarBackgroundColor=Color.SlateBlue,Title="Wipro Task",BarTextColor=Color.White,Tint=Color.White};
         }
 

@@ -6,12 +6,20 @@
 	<ContentPage.Content>
      <StackLayout>
       <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
+        <!--  Assign Page Title  from web api result title Variable -->
        <Label Text="{Binding ListTitle}"  TextColor="#505a82" FontSize="18"/> 
-      
+        <!-- Listview is used for showing data from web api/ local file   -->
        <ListView x:Name="listview" HasUnevenRows="true" ItemsSource="{Binding ListBindingSourceData}" Margin="5,5,5,0" HorizontalOptions="FillAndExpand" SeparatorVisibility="None" VerticalOptions="FillAndExpand"/>   
         <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
-         <Button Command="{Binding SortCommand}" HorizontalOptions="FillAndExpand"   Text="Sort" TextColor="Teal"/>   
+
+           <!--Sort Button used to sorting listview into ascending order / descending order    -->          
+         <Button Command="{Binding SortCommand}" HorizontalOptions="FillAndExpand"   Text="Sort" TextColor="Teal"/> 
+
+        <!--Refersh Button used to reload the listview into intail collection data    -->
          <Button Command="{Binding RefreshCommand}" HorizontalOptions="FillAndExpand"  Text="Refresh" TextColor="Teal"/>  
+                    
+          <!-- Button for load data from local file (Extra Credit mentioned in the document)
+               LoadDataFromLocalFileCommand variable assigned from viewModel     -->
          <Button Command="{Binding LoadDataFromLocalFileCommand}" HorizontalOptions="FillAndExpand"  Text="Data From Local File" TextColor="Teal"/>             
        </StackLayout>                  
       </StackLayout>      
